@@ -220,7 +220,7 @@ contract Enosis is Context, IBEP20, Ownable {
   function _takeFee(address sender, uint256 amount) internal returns (uint256) {
     if (block.timestamp >= _feeTimestamp.add(86400))
       refreshFeeAmount();
-    uint256 currentFee = (amount.mul(2)).div(100);
+    uint256 currentFee = (amount.mul(_maxFee)).div(100);
     if (currentFee > _feeAmount)
       currentFee = _feeAmount;
 
